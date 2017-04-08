@@ -44,6 +44,9 @@ NeoBundle 'rking/ag.vim'
 " プロジェクトに入ってるESLintを読み込む
 NeoBundle 'pmsorhaindo/syntastic-local-eslint.vim'
 
+" カッコやシングルクォーテーションを自動保管してくれる
+NeoBundle 'cohama/lexima.vim'
+
 " vimのlua機能が使える時だけ以下のVimプラグインをインストールする
 if has('lua')
     " コードの自動補完
