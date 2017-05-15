@@ -11,6 +11,10 @@ alias gpl='git pull origin'
 alias gst='git stash'
 alias gl='git log'
 
+alias y='yarn'
+alias yr='yarn run'
+alias yrd='yarn run dev'
+
 alias rs='rails s'
 alias be='bundle exec'
 alias rdc='bundle exec rake db:create'
@@ -20,4 +24,7 @@ alias rdmr='bundle exec rake db:migrate:reset'
 alias rds='bundle exec rake db:seed'
 alias db='sudo mysql.server'
 
-set -x  GOPATH $HOME/go/bin:$HOME/go
+set -x  GOPATH $HOME/go/bin $HOME/go
+set PYENV_ROOT $HOME/.pyenv
+set PATH $PYENV_ROOT/bin $PATH
+

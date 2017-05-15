@@ -17,3 +17,5 @@ alias rbs='bundle exec rake db:seed'
 
 alias db='sudo mysql.server'
 source ~/.bashrc
+
+if [[ -s /Users/ホームディレクトリ/.nvm/nvm.sh ]] ; then source /Users/ホームディレクトリ/.nvm/nvm.sh ; fi

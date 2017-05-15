@@ -47,6 +47,7 @@ NeoBundle 'pmsorhaindo/syntastic-local-eslint.vim'
 " カッコやシングルクォーテーションを自動保管してくれる
 NeoBundle 'cohama/lexima.vim'
 
+NeoBundle 'posva/vim-vue'
 " vimのlua機能が使える時だけ以下のVimプラグインをインストールする
 if has('lua')
     " コードの自動補完
