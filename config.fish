@@ -15,6 +15,9 @@ alias y='yarn'
 alias yr='yarn run'
 alias yrd='yarn run dev'
 
+alias bpy='bpython'
+alias py='python3'
+
 alias rs='rails s'
 alias be='bundle exec'
 alias rdc='bundle exec rake db:create'
