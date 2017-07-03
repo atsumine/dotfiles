@@ -10,6 +10,8 @@ alias gf='git fetch'
 alias gpl='git pull origin'
 alias gst='git stash'
 alias gl='git log'
+alias gd='git diff'
+alias gdc='git diff --cached'
 
 alias y='yarn'
 alias yr='yarn run'
