@@ -12,6 +12,11 @@ alias gst='git stash'
 alias gl='git log'
 alias gd='git diff'
 alias gdc='git diff --cached'
+alias gbl='git branch'
+alias gplp='git pull origin --prune'
+
+
+alias pks='pokemonsay'
 
 alias y='yarn'
 alias yr='yarn run'
@@ -32,4 +37,5 @@ alias db='sudo mysql.server'
 set -x  GOPATH $HOME/go/bin $HOME/go
 set PYENV_ROOT $HOME/.pyenv
 set PATH $PYENV_ROOT/bin $PATH
-
+set PATH $PATH /Users/kondouyutakabon/anaconda3/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.rbenv/shims /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Users/kondouyutakabon/anaconda3/envs/py36/bin
+source /Users/kondouyutakabon/anaconda3/bin/conda.fish
