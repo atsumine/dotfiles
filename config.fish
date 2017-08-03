@@ -12,7 +12,7 @@ alias gst='git stash'
 alias gl='git log'
 alias gd='git diff'
 alias gdc='git diff --cached'
-alias gbl='git branch'
+alias gbr='git branch'
 alias gplp='git pull origin --prune'
 
 
