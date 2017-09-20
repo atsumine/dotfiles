@@ -10,5 +10,9 @@ alias j='java'
 alias tomcat='/usr/local/Cellar/tomcat7/7.0.72/bin/catalina'
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] AND \. "$NVM_DIR/nvm.sh"  # This loads nvm
 export PATH="/path/to/anaconda/bin:$PATH"
+
+export CONSCRIPT_HOME="$HOME/.conscript"
+export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
+export PATH=$CONSCRIPT_HOME/bin:$PATH
