@@ -38,9 +38,12 @@ alias db='sudo mysql.server'
 set -x  GOPATH $HOME/go/bin $HOME/go
 set PYENV_ROOT $HOME/.pyenv
 set PATH $PYENV_ROOT/bin $PATH
-set PATH $PATH /Users/kondouyutakabon/anaconda3/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.rbenv/shims /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Users/kondouyutakabon/anaconda3/envs/py36/bin
+set PATH $PATH /Users/kondouyutakabon/anaconda3/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.rbenv/shims /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.rbenv/shims /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Users/kondouyutakabon/anaconda3/envs/py36/bin
 source /Users/kondouyutakabon/anaconda3/bin/conda.fish
 
 set CONSCRIPT_HOME $HOME/.conscript
 set CONSCRIPT_OPTS ""-XX:MaxPermSize=512M -Dfile.encoding=UTF-8""
 set PATH $CONSCRIPT_HOME/bin $PATH
+
+rbenv init - | source
+

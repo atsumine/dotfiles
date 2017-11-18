@@ -19,3 +19,9 @@ alias db='sudo mysql.server'
 source ~/.bashrc
 
 if [[ -s /Users/ホームディレクトリ/.nvm/nvm.sh ]] ; then source /Users/ホームディレクトリ/.nvm/nvm.sh ; fi
+export ANDROID_HOME=/usr/local/share/android-sdk
+export JAVA_HOME=/Library/Java/Home
+export ANDROID_HOME=/usr/local/share/android-sdk
+export JAVA_HOME=/Library/Java/Home
+export ANDROID_HOME=/usr/local/share/android-sdk
+export JAVA_HOME=/Library/Java/Home
