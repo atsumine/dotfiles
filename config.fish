@@ -34,17 +34,19 @@ alias rdmr='bundle exec rake db:migrate:reset'
 alias rds='bundle exec rake db:seed'
 alias db='sudo mysql.server'
 
-set -x  GOPATH $HOME/go/bin $HOME/go
-set PYENV_ROOT $HOME/.pyenv
-set PATH $PYENV_ROOT/bin $PATH
-set PATH $PATH /Users/kondouyutakabon/anaconda3/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.rbenv/shims /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.rbenv/shims /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Users/kondouyutakabon/anaconda3/envs/py36/bin
+set -xg  GOPATH $HOME/go/bin $HOME/go
+set -xg PYENV_ROOT $HOME/.pyenv
+set -gx PATH $PYENV_ROOT/bin $PATH
+set -gx PATH $PATH /Users/kondouyutakabon/anaconda3/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.rbenv/shims /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.rbenv/shims /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Users/kondouyutakabon/anaconda3/envs/py36/bin
 source /Users/kondouyutakabon/anaconda3/bin/conda.fish
 
-set CONSCRIPT_HOME $HOME/.conscript
-set CONSCRIPT_OPTS ""-XX:MaxPermSize=512M -Dfile.encoding=UTF-8""
-set PATH $CONSCRIPT_HOME/bin $PATH
+set -gx CONSCRIPT_HOME $HOME/.conscript
+set -gx CONSCRIPT_OPTS ""-XX:MaxPermSize=512M -Dfile.encoding=UTF-8""
+set -gx PATH $CONSCRIPT_HOME/bin $PATH
 
-set ANDROID_HOME /usr/local/share/android-sdk
+set -gx ANDROID_HOME /Users/kondouyutakabon/Library/Android/sdk
+
+set -gx PATH $PATH $ANDROID_HOME $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
 
 rbenv init - | source
 
