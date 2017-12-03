@@ -15,7 +15,6 @@ alias gdc='git diff --cached'
 alias gbr='git branch'
 alias gplp='git pull origin --prune'
 
-
 alias pks='pokemonsay'
 
 alias y='yarn'
@@ -46,8 +45,6 @@ set CONSCRIPT_OPTS ""-XX:MaxPermSize=512M -Dfile.encoding=UTF-8""
 set PATH $CONSCRIPT_HOME/bin $PATH
 
 set ANDROID_HOME /usr/local/share/android-sdk
-
-set PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
 
 rbenv init - | source
 
