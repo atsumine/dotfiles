@@ -50,3 +50,9 @@ set -gx PATH $PATH $ANDROID_HOME $ANDROID_HOME/tools $ANDROID_HOME/platform-tool
 
 rbenv init - | source
 
+set -x GPG_TTY (tty)
+
+function fish_user_key_bindings
+  bind \cr 'peco_select_history (commandline -b)'
+end
+
