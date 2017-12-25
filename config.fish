@@ -34,7 +34,7 @@ alias rdmr='bundle exec rake db:migrate:reset'
 alias rds='bundle exec rake db:seed'
 alias db='sudo mysql.server'
 
-set -xg  GOPATH $HOME/go/bin $HOME/go
+set -xg  GOPATH $HOME/go/bin $HOME/go $HOME/Development/golang
 set -xg PYENV_ROOT $HOME/.pyenv
 set -gx PATH $PYENV_ROOT/bin $PATH
 set -gx PATH $PATH /Users/kondouyutakabon/anaconda3/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.rbenv/shims /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.rbenv/shims /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Users/kondouyutakabon/anaconda3/envs/py36/bin
