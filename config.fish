@@ -1,3 +1,5 @@
+# ---[ alises  ]-----------------------------------------------------------------
+# -- git areases --
 alias g='git'
 alias gcom='git commit'
 alias gs='git status'
@@ -15,16 +17,20 @@ alias gdc='git diff --cached'
 alias gbr='git branch'
 alias gplp='git pull origin --prune'
 
+# --  joke app aliases --
 alias pks='pokemonsay'
 
+# -- npm or yarn aliases --
 alias y='yarn'
 alias yr='yarn run'
 alias yrd='yarn run dev'
 
+# -- python aliases --
 alias bpy='bpython'
 alias py='python3'
 alias pyc='bpython'
 
+# -- rails(ruby) aliases --
 alias rs='rails s'
 alias be='bundle exec'
 alias rdc='bundle exec rake db:create'
@@ -34,6 +40,7 @@ alias rdmr='bundle exec rake db:migrate:reset'
 alias rds='bundle exec rake db:seed'
 alias db='sudo mysql.server'
 
+# ---[ path  ] ----------------------------------------------------------------
 set -xg  GOPATH $HOME/go/bin $HOME/go $HOME/Development/golang
 set -xg PYENV_ROOT $HOME/.pyenv
 set -gx PATH $PYENV_ROOT/bin $PATH
@@ -48,9 +55,14 @@ set -gx ANDROID_HOME /Users/kondouyutakabon/Library/Android/sdk
 
 set -gx PATH $PATH $ANDROID_HOME $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
 
+# ---[ Scripts  ] -------------------------------------------------------------
 rbenv init - | source
 
 set -x GPG_TTY (tty)
+
+# fonts
+set -g theme_power_line_fonts no
+set -g theme_nerd_fonts yes
 
 function fish_user_key_bindings
   bind \cr 'peco_select_history (commandline -b)'
