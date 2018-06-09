@@ -16,6 +16,8 @@ alias gd='git diff'
 alias gdc='git diff --cached'
 alias gbr='git branch'
 alias gplp='git pull origin --prune'
+alias grh='git reset --hard'
+alias gcl= 'got clean -df'
 
 # --  joke app aliases --
 alias pks='pokemonsay'
@@ -41,21 +43,19 @@ alias rds='bundle exec rake db:seed'
 alias db='sudo mysql.server'
 
 # ---[ path  ] ----------------------------------------------------------------
-set -xg  GOPATH $HOME/go/bin $HOME/go $HOME/Development/golang
+set -xg GOPATH $HOME/go/bin $HOME/go $HOME/Development/golang
 set -xg PYENV_ROOT $HOME/.pyenv
-set -gx PATH $PYENV_ROOT/bin $PATH
-set -gx PATH $PATH /Users/kondouyutakabon/anaconda3/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.rbenv/shims /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.pyenv/bin /Users/kondouyutakabon/.rbenv/shims /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Users/kondouyutakabon/anaconda3/envs/py36/bin
-source /Users/kondouyutakabon/anaconda3/bin/conda.fish
-
 set -gx CONSCRIPT_HOME $HOME/.conscript
 set -gx CONSCRIPT_OPTS ""-XX:MaxPermSize=512M -Dfile.encoding=UTF-8""
 set -gx PATH $CONSCRIPT_HOME/bin $PATH
+set -gx ANDROID_HOME $HOME/Library/Android/sdk
 
-set -gx ANDROID_HOME /Users/kondouyutakabon/Library/Android/sdk
+set -gx PATH $PATH $HOME/anaconda3/bin $HOME/.pyenv/bin $HOME/.rbenv/shims $HOME/.pyenv/bin $HOME/.pyenv/bin $HOME/.rbenv/shims /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X10/bin $HOME/anaconda3/envs/py36/bin $PYENV_ROOT $ANDROID_HOME $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
 
-set -gx PATH $PATH $ANDROID_HOME $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
+source $HOME/anaconda3/bin/conda.fish
 
 # ---[ Scripts  ] -------------------------------------------------------------
+# -- rbenv --
 rbenv init - | source
 
 set -x GPG_TTY (tty)
@@ -64,6 +64,7 @@ set -x GPG_TTY (tty)
 set -g theme_power_line_fonts no
 set -g theme_nerd_fonts yes
 
+# -- peco settings --
 function fish_user_key_bindings
   bind \cr 'peco_select_history (commandline -b)'
 end
