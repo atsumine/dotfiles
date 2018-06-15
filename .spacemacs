@@ -51,7 +51,7 @@ values."
      rust
      java
      git
-     ;; markdown
+     markdown
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
