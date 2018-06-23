@@ -50,7 +50,7 @@ set -gx CONSCRIPT_OPTS ""-XX:MaxPermSize=512M -Dfile.encoding=UTF-8""
 set -gx PATH $CONSCRIPT_HOME/bin $PATH
 set -gx ANDROID_HOME $HOME/Library/Android/sdk
 
-set -gx PATH $PATH $HOME/anaconda3/bin $HOME/.pyenv/bin $HOME/.rbenv/shims $HOME/.pyenv/bin $HOME/.pyenv/bin $HOME/.rbenv/shims /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X10/bin $HOME/anaconda3/envs/py36/bin $PYENV_ROOT $ANDROID_HOME $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
+set -gx PATH $PATH $HOME/anaconda3/bin $HOME/.pyenv/bin $HOME/.rbenv/shims $HOME/.pyenv/bin $HOME/.pyenv/bin $HOME/.rbenv/shims /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X10/bin $HOME/anaconda3/envs/py36/bin $PYENV_ROOT $ANDROID_HOME $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $HOME/node_modules
 
 source $HOME/anaconda3/bin/conda.fish
 
