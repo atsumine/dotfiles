@@ -17,7 +17,7 @@ alias gdc='git diff --cached'
 alias gbr='git branch'
 alias gplp='git pull origin --prune'
 alias grh='git reset --hard'
-alias gcl= 'got clean -df'
+alias gcl='git clean -df'
 
 # --  joke app aliases --
 alias pks='pokemonsay'
