@@ -52,8 +52,8 @@ set -gx ANDROID_HOME $HOME/Library/Android/sdk
 
 set -gx PATH $PATH $HOME/anaconda3/bin $HOME/.pyenv/bin $HOME/.rbenv/shims $HOME/.pyenv/bin $HOME/.pyenv/bin $HOME/.rbenv/shims /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X10/bin $HOME/anaconda3/envs/py36/bin $PYENV_ROOT $ANDROID_HOME $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $HOME/node_modules
 
-source $HOME/anaconda3/bin/conda.fish
-
+# -- for anaconda & fish  --
+source (conda info --root)/etc/fish/conf.d/conda.fish
 # ---[ Scripts  ] -------------------------------------------------------------
 # -- rbenv --
 rbenv init - | source
@@ -69,3 +69,5 @@ function fish_user_key_bindings
   bind \cr 'peco_select_history (commandline -b)'
 end
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
