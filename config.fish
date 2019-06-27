@@ -75,3 +75,4 @@ function fish_user_key_bindings
   bind \cr 'peco_select_history (commandline -b)'
 end
 
+set -g fish_user_paths "/usr/local/opt/mysql@5.6/bin" $fish_user_paths
