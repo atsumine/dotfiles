@@ -41,7 +41,6 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ivy
-     vue
      auto-completion
      better-defaults
      emacs-lisp
@@ -53,19 +52,24 @@ values."
      yaml
      sql
      rust
+     (dart :variables
+         dart-enable-analysis-server t
+     )
      java
      git
-     (dart :variables
-      dart-enable-analysis-server t
-      dart-format-on-save t)
      markdown
-     ;; org
+     org
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
      spell-checking
-     syntax-checking
+     (syntax-checking :variables
+            syntax-checking-enable-tooltips t
+            syntax-checking-use-original-bitmaps t)
      version-control
+     neotree
+     (ranger :variables
+             ranger-show-preview t)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -76,6 +80,13 @@ values."
                                                            :fetcher github
                                                            :repo "codefalling/vue-mode"))
                                       dart-mode
+                                      lsp-dart
+                                      lsp-ui
+                                      lsp-mode
+                                      company-lsp
+                                      all-the-icons
+                                      all-the-icons-dired
+                                      editorconfig
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -124,13 +135,13 @@ values."
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
    dotspacemacs-editing-style 'emacs
+   dotspacemacs-mode-line-theme 'spacemacs
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
    ;; banner, `random' chooses a random text banner in `core/banners'
    ;; directory. A string value must be a path to an image format supported
-   ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
    dotspacemacs-startup-banner 'official
    ;; List of items to show in startup buffer or an association list of
@@ -213,7 +224,7 @@ values."
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
    dotspacemacs-max-rollback-slots 5
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
-   dotspacemacs-helm-resize nil
+   dotspacemacs-helm-resize t
    ;; if non nil, the helm header is hidden when there is only one source.
    ;; (default nil)
    dotspacemacs-helm-no-header nil
@@ -281,7 +292,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -291,7 +302,7 @@ values."
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc…
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
-   dotspacemacs-smart-closing-parenthesis nil
+   dotspacemacs-smart-closing-parenthesis t
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
@@ -312,7 +323,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'trailing
    ))
 
 (defun dotspacemacs/user-init ()
@@ -350,7 +361,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;;   (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
   ;;   (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
   ;;   (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
-  )
+   (setq ranger-override-dired t)
+)
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -360,8 +372,14 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (defun dotspacemacs/init-vue-mode ()
-    (use-package vue-mode))
-  )
+    (use-package vue-mode)
+    )
+  (add-hook 'dart-mode-hook 'flycheck-mode)
+  (setq neo-theme 'nerd)
+  (setq neo-vc-integration '(face))
+  (setq ranger-override-dired t)
+  (setq ranger-show-literal t)
+)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -372,10 +390,30 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (dart-mode insert-shebang company-shell auto-package-update fish-mode go-guru go-eldoc company-go go-mode unfill mwim xterm-color shell-pop multi-term markdown-toc markdown-mode git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md eshell-z eshell-prompt-extras esh-help diff-hl vue-mode edit-indirect ssass-mode vue-html-mode mmm-mode pug-mode less-css-mode haml-mode emmet-mode company-web web-completion-data yaml-mode web-beautify toml-mode tide typescript-mode sql-indent rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake racer org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download minitest livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc htmlize gnuplot flycheck-rust seq company-tern tern company-emacs-eclim eclim coffee-mode chruby cargo rust-mode bundler inf-ruby smeargle orgit noflet magit-gitflow gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor ensime sbt-mode scala-mode company-statistics company-anaconda company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional cython-mode anaconda-mode pythonic ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy org-plus-contrib evil-unimpaired f s dash))))
+    (lsp-ui lsp-dart company-lsp lsp-mode ht dart-mode insert-shebang company-shell auto-package-update fish-mode go-guru go-eldoc company-go go-mode unfill mwim xterm-color shell-pop multi-term markdown-toc markdown-mode git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md eshell-z eshell-prompt-extras esh-help diff-hl vue-mode edit-indirect ssass-mode vue-html-mode mmm-mode pug-mode less-css-mode haml-mode emmet-mode company-web web-completion-data yaml-mode web-beautify toml-mode tide typescript-mode sql-indent rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake racer org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download minitest livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc htmlize gnuplot flycheck-rust seq company-tern tern company-emacs-eclim eclim coffee-mode chruby cargo rust-mode bundler inf-ruby smeargle orgit noflet magit-gitflow gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor ensime sbt-mode scala-mode company-statistics company-anaconda company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional cython-mode anaconda-mode pythonic ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy org-plus-contrib evil-unimpaired f s dash))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (material-theme lsp-ui lsp-dart company-lsp lsp-mode ht dart-mode insert-shebang company-shell auto-package-update fish-mode go-guru go-eldoc company-go go-mode unfill mwim xterm-color shell-pop multi-term markdown-toc markdown-mode git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md eshell-z eshell-prompt-extras esh-help diff-hl vue-mode edit-indirect ssass-mode vue-html-mode mmm-mode pug-mode less-css-mode haml-mode emmet-mode company-web web-completion-data yaml-mode web-beautify toml-mode tide typescript-mode sql-indent rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake racer org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download minitest livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc htmlize gnuplot flycheck-rust seq company-tern tern company-emacs-eclim eclim coffee-mode chruby cargo rust-mode bundler inf-ruby smeargle orgit noflet magit-gitflow gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor ensime sbt-mode scala-mode company-statistics company-anaconda company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional cython-mode anaconda-mode pythonic ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy org-plus-contrib evil-unimpaired f s dash))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
