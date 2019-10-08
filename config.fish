@@ -54,14 +54,11 @@ set -gx CONSCRIPT_OPTS ""-XX:MaxPermSize=512M -Dfile.encoding=UTF-8""
 set -gx PATH $CONSCRIPT_HOME/bin $PATH
 set -gx ANDROID_HOME $HOME/Library/Android/sdk
 
-set -gx PATH $PATH $HOME/anaconda3/bin $HOME/.pyenv/bin $HOME/.rbenv/shims $HOME/.pyenv/bin $HOME/.pyenv/bin $HOME/.rbenv/shims /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X10/bin $HOME/anaconda3/envs/py36/bin $PYENV_ROOT $ANDROID_HOME $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $HOME/node_modules
+set -gx PATH $PATH $HOME/.pyenv/bin $HOME/.rbenv/shims $HOME/.pyenv/bin $HOME/.pyenv/bin $HOME/.rbenv/shims /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X10/bin $HOME/anaconda3/envs/py36/bin $PYENV_ROOT $ANDROID_HOME $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $HOME/node_modules
 
 set -gx PATH $PATH /usr/local/opt/mysql@5.7/bin
 set -gx PATH $PATH /Users/kondouyutakabon/flutter/bin
 
-
-# -- for anaconda & fish  --
-source (conda info --root)/etc/fish/conf.d/conda.fish
 # ---[ Scripts  ] -------------------------------------------------------------
 # -- rbenv --
 rbenv init - | source
@@ -78,3 +75,6 @@ function fish_user_key_bindings
 end
 
 set -g fish_user_paths "/usr/local/opt/mysql@5.6/bin" $fish_user_paths
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/kondouyutakabon/google-cloud-sdk/path.fish.inc' ]; . '/Users/kondouyutakabon/google-cloud-sdk/path.fish.inc'; end
